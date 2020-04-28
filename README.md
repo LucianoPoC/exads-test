@@ -26,7 +26,7 @@ docker-compose exec php bin/console exads:challenge:fizzbuzz 100
 
 ### 500 Element Array
 
-Searching/Searching.php
+[Searching](./app/src/Searching/Searching.php)
 
 ### Database Connectivity
 
@@ -42,8 +42,8 @@ docker-compose exec php bin/console exads:challenge:database:query
 
 ### Date Calculation
 
-Lottery
+[IrishLottery](./app/src/Lottery/IrishLottery.php)
 
 ### A/B Testing
 
-DistributedTraffic/DistributedTrafficController.php
+[Controller](./app/src/DistributedTraffic/DistributedTrafficController.php)
