@@ -25,7 +25,9 @@ select `name`, `age`, `job_title` from `exads_test`;
     protected function configure(): void
     {
         $this->setName('exads:challenge:database:query')
-            ->setDescription('Query table Exads test.');
+            ->setDescription('Query table Exads test.')
+            ->setDescription('I have used mysqli connection instead Doctrine or PDO in order to have more performance.')
+        ;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
