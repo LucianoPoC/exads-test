@@ -92,14 +92,16 @@ insert into `exads_test`
             $age = filter_var($input->getArgument(self::ARGUMENT_AGE), FILTER_SANITIZE_NUMBER_INT);
             $jobTitle = filter_var($input->getArgument(self::ARGUMENT_JOB_TITLE), FILTER_SANITIZE_STRING);
 
-            $query = "insert into `exads_test` (`name`, `age`, `job_title`) VALUES ('$name', $age, '$jobTitle')";
+            if ($name && $age && $jobTitle) {
+                $query = "insert into `exads_test` (`name`, `age`, `job_title`) VALUES ('$name', $age, '$jobTitle')";
 
-            if (\mysqli_query($connection, $query)) {
-                $output->writeln(sprintf('Record %s inserted', $name));
-            } else {
-                $output->writeln(sprintf('MySQL error: %s', mysqli_error($connection)));
-                $connection->close();
-                return 5;
+                if (\mysqli_query($connection, $query)) {
+                    $output->writeln(sprintf('Record %s inserted', $name));
+                } else {
+                    $output->writeln(sprintf('MySQL error: %s', mysqli_error($connection)));
+                    $connection->close();
+                    return 5;
+                }
             }
         }
 
