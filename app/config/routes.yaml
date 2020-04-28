@@ -1,0 +1,5 @@
+distributed::traffic:
+    path: /
+    methods: [GET]
+    controller: App\DistributedTraffic\DistributedTrafficController::index
+

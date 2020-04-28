@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+    db:
+        image: mysql:5.7
+        container_name: mysql
+        environment:
+            MYSQL_ROOT_PASSWORD: exads_root_password
+            MYSQL_DATABASE: exads_test_db
+            MYSQL_USER: dev_user
+            MYSQL_PASSWORD: dev_password
+        ports:
+            - "3306:3306"
+    php:
+        image: php:7.4-fpm-alpine
+        build:
+            context: .
+            dockerfile: docker/php/Dockerfile
+        container_name: php
+        depends_on:
+            - db
+        volumes:
+            - ./app/:/var/www/html/
+        ports:
+            - "8080:80"
+        stdin_open: true
+        tty: true
